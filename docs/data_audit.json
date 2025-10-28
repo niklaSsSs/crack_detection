@@ -1,0 +1,86 @@
+{
+  "dataset_path": "/Users/niklaswegner/python_proj/crack_model/SDNET2018",
+  "domains": {
+    "Bridge": {
+      "Crack": 2025,
+      "NonCrack": 11595,
+      "corrupt": 0,
+      "total": 13620,
+      "crack_ratio": 0.1486784140969163
+    },
+    "Pavement": {
+      "Crack": 2608,
+      "NonCrack": 21726,
+      "corrupt": 0,
+      "total": 24334,
+      "crack_ratio": 0.10717514588641407
+    },
+    "Wall": {
+      "Crack": 3851,
+      "NonCrack": 14287,
+      "corrupt": 0,
+      "total": 18138,
+      "crack_ratio": 0.21231668320652775
+    }
+  },
+  "global_stats": {
+    "total_images": 56092,
+    "total_corrupt": 0,
+    "total_duplicates": 13,
+    "class_distribution": {
+      "Crack": 8484,
+      "NonCrack": 47608
+    }
+  },
+  "image_properties": {
+    "modes": {
+      "RGB": 56092
+    },
+    "formats": {
+      "JPEG": 56092
+    }
+  },
+  "size_statistics": {
+    "width": {
+      "min": 256,
+      "max": 256,
+      "median": 256,
+      "q10": 256,
+      "q90": 256
+    },
+    "height": {
+      "min": 256,
+      "max": 256,
+      "median": 256,
+      "q10": 256,
+      "q90": 256
+    }
+  },
+  "duplicates": {
+    "count": 13,
+    "total_duplicate_files": 13,
+    "examples": [
+      [
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-17.jpg",
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-17_2.jpg"
+      ],
+      [
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-89.jpg",
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-89_2.jpg"
+      ],
+      [
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7039-112_2.jpg",
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/CD/7039-112.jpg"
+      ],
+      [
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-18_2.jpg",
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-18.jpg"
+      ],
+      [
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-54.jpg",
+        "/Users/niklaswegner/python_proj/crack_model/SDNET2018/D/UD/7053-54_2.jpg"
+      ]
+    ]
+  },
+  "corrupt_files": []
+}
