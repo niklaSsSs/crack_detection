@@ -1,4 +1,4 @@
-# Configuration for NVIDIA A40 Server Training
+pers# Configuration for NVIDIA A40 Server Training
 # Optimiert für ~40% GPU Auslastung (max 18GB VRAM von 46GB)
 
 experiment:
@@ -10,7 +10,7 @@ experiment:
 data:
   data_dir: "./SDNET2018"  # Anpassen an Server-Pfad
   input_size: 512  # Höhere Auflösung für bessere Features
-  num_workers: 8  # Server hat mehr Cores
+  num_workers: 0  # Auf 0 wegen shared memory issues
   pin_memory: true  # Schneller mit CUDA
 
   # Split ratios
@@ -134,7 +134,7 @@ performance:
 
   # Async Data Loading
   prefetch_factor: 2  # Vorladen von 2 Batches
-  persistent_workers: true  # Worker nicht neu starten
+  persistent_workers: false  # Requires num_workers > 0
 
   # Compile (PyTorch 2.0+)
   compile_model: false  # Experimentell, kann Fehler geben
