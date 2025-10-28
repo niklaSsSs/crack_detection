@@ -1,0 +1,107 @@
+➜ python src/train.py --config configs/config_server_a40.yaml
+/home/coder/.local/lib/python3.13/site-packages/albumentations/check_version.py:147: UserWarning: Error fetching version info <urlopen error [Errno 111] Connection refused>
+  data = fetch_version_info()
+Using CUDA: NVIDIA A40
+
+Experiment: crack_encoder_a40_20251028_080155
+Logs: outputs/logs/crack_encoder_a40_20251028_080155
+
+Loading dataset...
+Total images: 56092
+Crack: 8484, NonCrack: 47608
+Unique series: 230
+
+Creating grouped split...
+
+TRAIN:
+  Total: 50458 (90.0%)
+  Crack: 7562 (15.0%)
+  NonCrack: 42896 (85.0%)
+
+VAL:
+  Total: 2682 (4.8%)
+  Crack: 442 (16.5%)
+  NonCrack: 2240 (83.5%)
+
+TEST:
+  Total: 2952 (5.3%)
+  Crack: 480 (16.3%)
+  NonCrack: 2472 (83.7%)
+/home/coder/.local/lib/python3.13/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+/home/coder/expainorm/crack_detection/crack_model/src/train.py:118: UserWarning: Argument(s) 'quality_lower, quality_upper' are not valid for transform ImageCompression
+  transforms.append(A.ImageCompression(
+
+Datasets:
+  Train: 50458
+  Val: 2682
+  Test: 2952
+  ✓ Loading weights from: efficientnet_b0_rwightman-7f5810bc.pth
+
+Model: efficientnet_b0
+  Total params: 4,008,829
+  Trainable params: 4,008,829
+
+Loss: BCEWithLogitsLoss (pos_weight=5.67)
+/home/coder/expainorm/crack_detection/crack_model/src/train.py:414: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = GradScaler()
+Using mixed precision (FP16)
+Gradient accumulation: 2 steps
+
+================================================================================
+TRAINING START
+================================================================================
+
+Epoch 1/30
+--------------------------------------------------------------------------------
+Learning rate: 0.000150
+Epoch 1:   0%|                                                                                            | 0/1577 [00:00<?, ?it/s]ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+Epoch 1:   0%|                                                                                            | 0/1577 [00:21<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1285, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/usr/local/lib/python3.13/queue.py", line 213, in get
+    self.not_empty.wait(remaining)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/threading.py", line 363, in wait
+    gotit = waiter.acquire(True, timeout)
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/_utils/signal_handling.py", line 73, in handler
+    _error_if_any_worker_fails()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: DataLoader worker (pid 141659) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/coder/expainorm/crack_detection/crack_model/src/train.py", line 783, in <module>
+    main()
+    ~~~~^^
+  File "/home/coder/expainorm/crack_detection/crack_model/src/train.py", line 779, in main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/coder/expainorm/crack_detection/crack_model/src/train.py", line 577, in train
+    train_metrics = self.train_epoch()
+  File "/home/coder/expainorm/crack_detection/crack_model/src/train.py", line 440, in train_epoch
+    for batch_idx, batch in enumerate(pbar):
+                            ~~~~~~~~~^^^^^^
+  File "/home/coder/.local/lib/python3.13/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+               ^^^^^^^^
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1492, in _next_data
+    idx, data = self._get_data()
+                ~~~~~~~~~~~~~~^^
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1444, in _get_data
+    success, data = self._try_get_data()
+                    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/coder/.local/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1298, in _try_get_data
+    raise RuntimeError(
+        f"DataLoader worker (pid(s) {pids_str}) exited unexpectedly"
+    ) from e
+RuntimeError: DataLoader worker (pid(s) 141659) exited unexpectedly
